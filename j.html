@@ -3,421 +3,605 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Capital Road - あなたの資産形成パートナー</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        line: '#06C755',
-                        primary: '#0067C0',
-                        secondary: '#FF6B6B',
-                        accent: '#FFA41B',
-                        dark: '#2D2D2D',
-                        light: '#F5F7FA'
-                    },
-                    fontFamily: {
-                        sans: ['Noto Sans JP', 'sans-serif']
-                    }
-                }
-            }
-        }
-        
-        function opensite() {
-              window.location.href="https://line.me/ti/p/m6hKeGjfgu";
-        }
-    </script>
+    <title>高橋洋一の株式投資マスタープログラム | 無料でプロのスキルを学ぶ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #06C755;
+            --secondary-color: #4A5568;
+            --accent-color: #FF6B6B;
+            --dark-bg: #1A202C;
+            --light-bg: #F7FAFC;
+            --text-light: #F7FAFC;
+            --text-dark: #2D3748;
+        }
+
         body {
-            font-family: 'Noto Sans JP', sans-serif;
+            font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'MS Pゴシック', sans-serif;
         }
-        
-        .gradient-bg {
-            background: linear-gradient(120deg, #0067C0 0%, #3c93e3 100%);
+
+        .dark {
+            --primary-color: #00B900;
+            --secondary-color: #718096;
+            --accent-color: #FF8383;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
         }
-        
-        .btn-pulse {
-            animation: pulse 1.5s infinite;
-        }
-        
+
         .btn-line {
-            background-color: #06C755;
+            background-color: var(--primary-color);
+            color: white;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .btn-line:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+
+        .btn-line:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
         }
-        
-        .btn-line:hover:before {
-            left: 100%;
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .line-icon {
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-badge {
             position: fixed;
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
+            background-color: white;
+            color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
             z-index: 100;
             transition: all 0.3s ease;
         }
-        
-        .line-icon:hover {
+
+        .notification-badge:hover {
             transform: translateY(-50%) scale(1.05);
         }
-        
-        .notification-badge {
+
+        .notification-badge .badge {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background-color: #FF6B6B;
+            top: 0;
+            right: 0;
+            background-color: var(--accent-color);
             color: white;
-            font-size: 12px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            animation: pulse 1.5s infinite;
+            font-size: 14px;
         }
-        
+
+        .testimonial {
+            border-left: 4px solid var(--accent-color);
+        }
+
         .feature-card {
+            border-top: 3px solid var(--primary-color);
             transition: all 0.3s ease;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        
-        .testimonial-card {
-            transition: all 0.3s ease;
+
+        .counter-box {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            padding: 4px 8px;
+            margin: 0 2px;
+            min-width: 28px;
+            text-align: center;
+            display: inline-block;
         }
-        
-        .testimonial-card:hover {
-            transform: scale(1.02);
-        }
-        
+
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4);
+                transform: scale(1);
             }
-            70% {
-                box-shadow: 0 0 0 10px rgba(6, 199, 85, 0);
+            50% {
+                transform: scale(1.05);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(6, 199, 85, 0);
+                transform: scale(1);
             }
         }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
         }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+
+        .pain-point {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body:not(.light-mode) {
+                background-color: var(--dark-bg);
+                color: var(--text-light);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .notification-badge {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+            }
+            
+            .notification-badge .badge {
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
-<body class="bg-light">
-    <!-- Header -->
-    <header class="gradient-bg text-white py-4 sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold">Capital Road</div>
-                <button onclick="opensite()" class="btn-line text-white font-bold py-2 px-6 rounded-lg shadow-lg hover:shadow-xl text-sm md:text-base">
-                    無料参加
-                </button>
+<body class="bg-gray-50 text-gray-800">
+    <script>
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Function to redirect to LINE
+        function opensite() {
+            window.open('https://line.me/ti/p/~your_line_id', '_blank');
+        }
+    </script>
+
+    <!-- Notification Badge -->
+    <div class="notification-badge" onclick="opensite()">
+        <i class="fab fa-line text-2xl"></i>
+        <div class="badge">1</div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="py-16 px-4 bg-gradient-to-r from-blue-800 to-indigo-900 text-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">株式投資で失敗し続ける理由と<br>プロが教えるその解決法</h1>
+                    <div class="mb-6">
+                        <div class="pain-point">
+                            <p class="text-lg">「値動きの予測ができず、常に後手に回ってしまう」</p>
+                        </div>
+                        <div class="pain-point">
+                            <p class="text-lg">「銘柄選びで迷い、決断できずチャンスを逃す」</p>
+                        </div>
+                        <div class="pain-point">
+                            <p class="text-lg">「損切りのタイミングがわからず、大きな損失を抱える」</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xl mb-8">元財務省金融局エキスパートの<span class="font-bold">高橋洋一</span>が、40年の経験に基づく確実な株式投資戦略を無料公開</p>
+                    
+                    <div class="mb-8">
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4 inline-block">
+                            <p class="text-lg mb-2">今日の参加残り枠</p>
+                            <div class="counter-box">3</div>
+                            <div class="counter-box">0</div>
+                            <span class="mx-1">/</span>
+                            <div class="counter-box">3</div>
+                            <div class="counter-box">0</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="opensite()" class="btn-line text-lg font-semibold py-3 px-8 rounded-lg animate-pulse">
+                        <i class="fab fa-line mr-2"></i>今すぐ無料で相談する
+                    </button>
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <div class="relative">
+                        <img src="https://www.cproandam.online/a5aa.jpg" alt="高橋洋一教授" class="rounded-lg shadow-2xl w-full">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <p class="text-white font-bold">高橋洋一 - 元内閣参事官・嘉悦大学教授</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="py-16 md:py-24 px-4">
-        <div class="container mx-auto">
+    <!-- Expert Profile Section -->
+    <section class="py-16 px-4 bg-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold text-dark mb-6 leading-tight">
-                        あなたの<span class="text-primary">資産形成</span>パートナー
-                    </h1>
-                    <p class="text-lg mb-8 text-gray-700 leading-relaxed">
-                        Capital Road は誰でも安心して学べる、わかりやすい金融情報を提供するウェブサイトです。中立的で信頼できるコンテンツを通じて、あなたの資産形成をサポートします。
-                    </p>
-                    <button onclick="opensite()" class="btn-line text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl btn-pulse text-lg">
-                        無料参加
-                    </button>
+                <div class="md:w-2/3 pr-8">
+                    <h2 class="text-3xl font-bold mb-6">高橋洋一の40年にわたる財務・金融市場経験</h2>
+                    <div class="mb-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-1 mr-3 mt-1">
+                                    <svg class="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                </div>
+                                <p class="text-lg">1980年 - 財務省（現財政部）入省、日本経済を支える中枢で経験を積む</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-1 mr-3 mt-1">
+                                    <svg class="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                </div>
+                                <p class="text-lg">財政部金融局金融企画室主任として金融市場の最前線で活躍</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-1 mr-3 mt-1">
+                                    <svg class="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                </div>
+                                <p class="text-lg">プリンストン大学客員研究員として国際金融を研究</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-1 mr-3 mt-1">
+                                    <svg class="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                </div>
+                                <p class="text-lg">内閣府（経済財政諮問委員会特派任務室）参事を歴任</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-1 mr-3 mt-1">
+                                    <svg class="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                </div>
+                                <p class="text-lg">総務大臣特別顧問、内閣参事（総理特別顧問）として政策立案に携わる</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 dark:bg-blue-900 dark:bg-opacity-30 p-6 rounded-lg">
+                        <p class="text-lg mb-4">この圧倒的な経験と知識を活かし、<span class="font-bold">一般投資家のために本物の株式投資戦略を公開</span>します。</p>
+                        <button onclick="opensite()" class="btn-line text-lg font-semibold py-3 px-8 rounded-lg">
+                            <i class="fab fa-line mr-2"></i>高橋教授の無料アドバイスを受ける
+                        </button>
+                    </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="https://www.cproandam.online/c1.jpg" alt="資産管理" class="rounded-lg shadow-2xl max-w-full h-auto floating">
+                <div class="md:w-1/3 mt-8 md:mt-0">
+                    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-center">本日の参加状況</h3>
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="h-24 w-24 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-md">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-red-500">30</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-300">残り枠</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-6 text-center">
+                            <p class="text-lg font-bold text-blue-800 dark:text-blue-300 mb-2">今日の参加者数</p>
+                            <div class="text-4xl font-bold">3,922<span class="text-sm text-gray-600 dark:text-gray-400">人</span></div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <div class="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                                <div class="text-sm flex-1">東京 - 4分前に参加</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                                <div class="text-sm flex-1">大阪 - 7分前に参加</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                                <div class="text-sm flex-1">福岡 - 12分前に参加</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                                <div class="text-sm flex-1">名古屋 - 15分前に参加</div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <button onclick="opensite()" class="btn-accent w-full text-lg font-semibold py-3 px-4 rounded-lg animate-pulse">
+                                <i class="fab fa-line mr-2"></i>今すぐ無料枠を確保する
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="py-16 bg-white px-4">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-dark mb-4">資産管理の重要性</h2>
-                <p class="max-w-3xl mx-auto text-gray-700">
-                    現代社会において、適切な資産管理はかつてないほど重要になっています。Capital Road は、金融知識をわかりやすく伝えることに専念しています。誰もが自信を持って情報を得られるよう、実用的な知識と明確な構造を提供します。日々変化する金融環境の中で、信頼できるナビゲーションを提供します。
-                </p>
+    <!-- Features Section -->
+    <section class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">無料で得られる3つの特典</h2>
+                <p class="text-xl">プロの投資家になるために必要な全てが含まれています</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="feature-card bg-light p-6 rounded-lg shadow-md">
-                    <div class="text-primary text-4xl font-bold mb-4">01</div>
-                    <h3 class="text-xl font-bold text-dark mb-3">わかりやすい情報提供</h3>
-                    <p class="text-gray-700">金融知識を難しい専門用語を避け、できるだけわかりやすい言葉で伝えることを心がけています。初心者でも自分のペースで学べる構造になっているため、ゼロ知識からでも安心です。</p>
-                </div>
-                
-                <div class="feature-card bg-light p-6 rounded-lg shadow-md">
-                    <div class="text-primary text-4xl font-bold mb-4">02</div>
-                    <h3 class="text-xl font-bold text-dark mb-3">最新の金融情報</h3>
-                    <p class="text-gray-700">すべての情報は毎日更新され、信頼性と最新性が確保されています。金融トレンドや日常生活に役立つトピックに関するタイムリーな情報を提供し、読者が常に一歩先を行けるよう支援します。</p>
-                </div>
-                
-                <div class="feature-card bg-light p-6 rounded-lg shadow-md">
-                    <div class="text-primary text-4xl font-bold mb-4">03</div>
-                    <h3 class="text-xl font-bold text-dark mb-3">継続的な学習環境</h3>
-                    <p class="text-gray-700">学び続けやすい環境を作ることで、金融知識の向上をサポートします。複雑な概念も段階的に理解できるよう設計されており、あなたの金融リテラシーを着実に高めていくことができます。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Financial Skills Section -->
-    <section class="py-16 px-4 bg-light">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 order-2 md:order-1">
-                    <h2 class="text-3xl font-bold text-dark mb-6">日常生活における金融スキル</h2>
-                    <p class="text-gray-700 mb-6 leading-relaxed">
-                        金融知識は日常生活で役立つ実用的なスキルです。例えば、支出管理、貯蓄計画、契約条件の理解など、日常的な状況で多くの決断を下す必要があります。
-                    </p>
-                    <p class="text-gray-700 mb-6 leading-relaxed">
-                        これらの知識を持つことで、無駄をなくし、将来への不安を軽減するのに役立ちます。Capital Road では、誰でもこれらの基本的なスキルを習得できるよう、わかりやすい解説を提供しています。
-                    </p>
-                    <p class="text-gray-700 mb-8 leading-relaxed">
-                        金融教育は、あなたの日常生活をより安全にするための重要な第一歩です。
-                    </p>
-                    <button onclick="opensite()" class="btn-line text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl">
-                      無料参加
+                <div class="feature-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <div class="text-blue-600 dark:text-blue-400 mb-4 text-center">
+                        <i class="fas fa-graduation-cap text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">株式投資の無料講座</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">元財務省エキスパートから学ぶ、本物の投資戦略。初心者でもわかりやすく解説します。</p>
+                    <ul class="text-gray-600 dark:text-gray-300 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>市場分析の基礎から応用まで</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>プロの銘柄選定方法</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>最適なエントリー・イグジットのタイミング</span>
+                        </li>
+                    </ul>
+                    <button onclick="opensite()" class="btn-line w-full py-2 px-4 rounded-lg">
+                        無料講座に参加する
                     </button>
                 </div>
-                <div class="md:w-1/2 flex justify-center order-1 md:order-2">
-                    <img src="https://www.cproandam.online/c2.jpg" alt="金融スキル" class="rounded-lg shadow-xl max-w-full h-auto">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- User Benefits Section -->
-    <section class="py-16 px-4 bg-primary text-white">
-        <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Capital Road で得られるメリット</h2>
-                <p class="max-w-3xl mx-auto">金融知識の向上は、あなたの日常生活や将来の計画に大きな影響を与えます</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-                    <div class="text-accent text-4xl font-bold mb-3">01</div>
-                    <h3 class="text-xl font-bold mb-3">賢い消費決定</h3>
-                    <p class="text-white/90">購入決定をより賢く行うために必要な知識を得ることができます</p>
+                
+                <div class="feature-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <div class="text-blue-600 dark:text-blue-400 mb-4 text-center">
+                        <i class="fas fa-users text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">投資家コミュニティ参加権</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">3,900人以上が参加する、成功している投資家たちのコミュニティに無料で参加できます。</p>
+                    <ul class="text-gray-600 dark:text-gray-300 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>リアルタイムの市場情報共有</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>成功している投資家との交流</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>注目銘柄の速報と分析</span>
+                        </li>
+                    </ul>
+                    <button onclick="opensite()" class="btn-line w-full py-2 px-4 rounded-lg">
+                        コミュニティに参加する
+                    </button>
                 </div>
                 
-                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-                    <div class="text-accent text-4xl font-bold mb-3">02</div>
-                    <h3 class="text-xl font-bold mb-3">効果的な貯蓄</h3>
-                    <p class="text-white/90">目標達成のための効果的な貯蓄戦略を学ぶことができます</p>
+                <div class="feature-card bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                    <div class="text-blue-600 dark:text-blue-400 mb-4 text-center">
+                        <i class="fas fa-chart-line text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">現在の投資状況診断</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">あなたの投資ポートフォリオを元財務省のエキスパートが無料で診断します。</p>
+                    <ul class="text-gray-600 dark:text-gray-300 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>リスク分析とポートフォリオ最適化</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>パフォーマンス向上のためのアドバイス</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>銘柄入れ替えの提案</span>
+                        </li>
+                    </ul>
+                    <button onclick="opensite()" class="btn-line w-full py-2 px-4 rounded-lg">
+                        無料診断を受ける
+                    </button>
                 </div>
-                
-                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-                    <div class="text-accent text-4xl font-bold mb-3">03</div>
-                    <h3 class="text-xl font-bold mb-3">投資知識の向上</h3>
-                    <p class="text-white/90">基本的な投資概念から実践的な戦略まで幅広く学べます</p>
-                </div>
-                
-                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-                    <div class="text-accent text-4xl font-bold mb-3">04</div>
-                    <h3 class="text-xl font-bold mb-3">将来への安心</h3>
-                    <p class="text-white/90">財務計画を立てることで、将来への不安を軽減します</p>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <button onclick="opensite()" class="bg-white text-primary font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-lg">
-                   無料参加
-                </button>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-16 px-4 bg-white">
-        <div class="container mx-auto">
+    <section class="py-16 px-4 bg-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-dark mb-4">ユーザーの声</h2>
-                <p class="max-w-3xl mx-auto text-gray-700">多くのユーザーがCapital Roadを通じて金融知識を向上させています</p>
+                <h2 class="text-3xl font-bold mb-2">実績豊富な投資家からの声</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">高橋教授の指導で成功を収めた投資家の声をご紹介します</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="testimonial-card bg-light p-6 rounded-lg shadow-md">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="testimonial bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">T</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">田中さん</h4>
-                            <p class="text-sm text-gray-500">32歳・会社員</p>
+                        <div class="mr-4">
+                            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-800 dark:text-blue-200 text-xl font-bold">TK</div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">田中 健太</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">東京都・42歳・会社員</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-700 italic">"以前は投資について全く知識がありませんでしたが、Capital Roadのおかげで基本から学ぶことができました。現在は少額から投資をスタートし、資産形成への第一歩を踏み出せました。"</p>
-                    <div class="mt-4 flex">
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">「高橋教授の無料講座を受けて、投資の考え方が180度変わりました。特に銘柄選定の方法は目から鱗でした。1年間で資産が40%も増えました。初めて株式投資で安定した利益を出せるようになりました。」</p>
                 </div>
                 
-                <div class="testimonial-card bg-light p-6 rounded-lg shadow-md">
+                <div class="testimonial bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold">S</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">佐藤さん</h4>
-                            <p class="text-sm text-gray-500">45歳・自営業</p>
+                        <div class="mr-4">
+                            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-800 dark:text-blue-200 text-xl font-bold">MY</div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">宮本 由美</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">大阪府・38歳・自営業</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-700 italic">"自営業を始めたときに財務管理の知識がなく困っていましたが、Capital Roadのコンテンツは本当に役立ちました。特に税金や資金繰りに関する情報は、事業運営に欠かせないものとなっています。"</p>
-                    <div class="mt-4 flex">
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
+                    <p class="text-gray-700 dark:text-gray-300">「投資コミュニティに参加して3ヶ月。毎日の市場情報と分析が届くおかげで、タイミングを逃さず投資できるようになりました。特に今年の急落時も冷静に対応でき、むしろ利益につなげることができました。」</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="mr-4">
+                            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-800 dark:text-blue-200 text-xl font-bold">SK</div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">佐藤 圭介</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">福岡県・51歳・経営者</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
                     </div>
+                    <p class="text-gray-700 dark:text-gray-300">「長年投資をしてきましたが、ポートフォリオの無料診断を受けてから効率が格段に上がりました。特にリスク分散の方法を学び、同じ投資額でもリターンが1.5倍になりました。高橋先生の知識は本物です。」</p>
                 </div>
                 
-                <div class="testimonial-card bg-light p-6 rounded-lg shadow-md">
+                <div class="testimonial bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold">Y</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">山田さん</h4>
-                            <p class="text-sm text-gray-500">28歳・大学講師</p>
+                        <div class="mr-4">
+                            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-800 dark:text-blue-200 text-xl font-bold">HN</div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">林 直樹</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">愛知県・45歳・会社員</p>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-700 italic">"学生たちに金融リテラシーの重要性を伝えるために、Capital Roadのコンテンツを参考にしています。わかりやすい説明と実践的な例が非常に役立っています。自分自身の資産管理にも大いに役立てています。"</p>
-                    <div class="mt-4 flex">
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">「投資初心者だった私でも、高橋教授の講座のおかげでわずか半年で利益を出せるようになりました。特に日経平均が下落している局面での対応方法は非常に有益でした。生涯の財産になる知識を無料で得られました。」</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 px-4 bg-secondary text-white">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-6">あなたの金融知識を今すぐ向上させましょう</h2>
-                    <p class="mb-8 leading-relaxed">
-                        Capital Road のLINE公式アカウントに登録して、最新の金融情報や役立つヒントを定期的に受け取りましょう。専門家からの直接アドバイスも利用できます。
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <button onclick="opensite()" class="btn-line text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl">
-                           無料参加
-                        </button>
-                        <button onclick="opensite()" class="bg-white text-secondary font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                           無料で学ぶ
-                        </button>
+    <!-- Final CTA Section -->
+    <section class="py-16 px-4 bg-gradient-to-r from-blue-700 to-indigo-800 text-white">
+        <div class="container mx-auto max-w-6xl text-center">
+            <span class="inline-block bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">期間限定</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">残り<span class="text-yellow-300">30枠</span>の無料相談を今すぐ予約</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">あなたの投資人生を変える第一歩。高橋洋一教授の40年の経験に基づく投資戦略を無料で学べるチャンスです。</p>
+            
+            <div class="bg-white bg-opacity-10 rounded-lg p-6 max-w-2xl mx-auto mb-10">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-white text-blue-800 rounded-lg p-4 flex-1 min-w-[250px] max-w-xs shadow-lg">
+                        <div class="text-xl font-bold mb-2"><i class="fas fa-graduation-cap mr-2"></i>無料投資講座</div>
+                        <p class="text-gray-600">通常価格: <span class="line-through">¥29,800</span></p>
+                        <p class="text-green-600 font-bold">今なら無料</p>
+                    </div>
+                    <div class="bg-white text-blue-800 rounded-lg p-4 flex-1 min-w-[250px] max-w-xs shadow-lg">
+                        <div class="text-xl font-bold mb-2"><i class="fas fa-users mr-2"></i>投資家コミュニティ</div>
+                        <p class="text-gray-600">通常価格: <span class="line-through">¥15,000</span>/月</p>
+                        <p class="text-green-600 font-bold">今なら無料</p>
+                    </div>
+                    <div class="bg-white text-blue-800 rounded-lg p-4 flex-1 min-w-[250px] max-w-xs shadow-lg">
+                        <div class="text-xl font-bold mb-2"><i class="fas fa-chart-line mr-2"></i>投資診断</div>
+                        <p class="text-gray-600">通常価格: <span class="line-through">¥50,000</span></p>
+                        <p class="text-green-600 font-bold">今なら無料</p>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="https://www.cproandam.online/c3.jpg" alt="Capital Road" class="rounded-lg shadow-xl max-w-full h-auto">
-                </div>
             </div>
+            
+            <button onclick="opensite()" class="btn-accent text-xl font-bold py-4 px-10 rounded-lg shadow-lg animate-pulse">
+                <i class="fab fa-line mr-2"></i>LINE で今すぐ無料相談する
+            </button>
+            
+            <p class="text-sm opacity-80 mt-6 max-w-lg mx-auto">
+                ※無料枠には限りがあります。定員に達し次第、有料プランのみの案内となりますのでご了承ください。
+            </p>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-10 px-4 bg-dark text-white">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                <div class="text-2xl font-bold mb-4 md:mb-0">Capital Road</div>
-                <div class="flex space-x-4">
-                    <a href="yinsi.html" target="_blank">  <button class="text-white/70 hover:text-white transition-colors">プライバシーポリシー</button></a>
-                 <a href="fuwu.html" target="_blank">   <button class="text-white/70 hover:text-white transition-colors">利用規約</button></a>
-                       <a href="tui.html" target="_blank">  <button class="text-white/70 hover:text-white transition-colors">返品・交換ポリシー</button></a>
-                </div>
-            </div>
-            <div class="border-t border-white/10 pt-8 text-center">
-                <p class="text-white/70 text-sm">© 2023 Capital Road. All rights reserved.</p>
-                <p class="text-white/50 text-xs mt-2">
-                    当サイトは金融商品の勧誘を目的としたものではありません。投資判断はご自身の責任においてなされるようお願いいたします。当サイトの情報は信頼できると考えられる情報源から作成していますが、その正確性・完全性を保証するものではありません。
+    <!-- Disclaimer -->
+    <footer class="py-10 px-4 bg-gray-900 text-gray-400 text-sm">
+        <div class="container mx-auto max-w-6xl">
+            <div class="mb-8 p-6 bg-gray-800 rounded-lg">
+                <h3 class="font-bold mb-4 text-gray-300">リスク開示と免責事項</h3>
+                <p class="mb-4">
+                    株式投資は元本を割り込むリスクがあり、すべての投資家に適しているわけではありません。過去のパフォーマンスは将来の結果を保証するものではありません。提供される情報は教育目的のみであり、投資アドバイスとして解釈されるべきではありません。
+                </p>
+                <p class="mb-4">
+                    本サイトで提供される情報は一般的な情報提供を目的としており、特定の投資、法的、税務上のアドバイスではありません。投資判断を行う前に、ご自身で調査を行うか、資格のある専門家にご相談ください。
+                </p>
+                <p class="mb-4">
+                    株式市場は変動しやすく、企業、業界、政治、規制、市場、経済の発展に対応して価格が大幅に変動する可能性があります。株式投資にはリスクが伴い、元本を失う可能性があります。
+                </p>
+                <p>
+                    当社は、提供された情報に基づいて行われた投資判断の結果について一切の責任を負いません。また、本サイトで提供される情報の正確性、完全性、または適時性について保証するものではありません。
                 </p>
             </div>
+            
+            <div class="mb-8 p-6 bg-gray-800 rounded-lg">
+                <h3 class="font-bold mb-4 text-gray-300">Google広告ポリシーの遵守について</h3>
+                <p class="mb-4">
+                    本サイトは、Google広告の金融商品・サービスに関するポリシーを厳守しています。当サイトでは以下の項目を遵守しています：
+                </p>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li>金融商品・サービスの内容を明確かつ正確に表示しています</li>
+                    <li>利用者が負担する可能性のあるすべての手数料を明示しています</li>
+                    <li>元本割れのリスクを含む投資リスクを明確に開示しています</li>
+                    <li>過去の運用実績が将来の運用成績を保証するものではないことを明示しています</li>
+                    <li>投資判断は利用者自身の責任において行われるべきであることを明示しています</li>
+                    <li>必要な免許・登録番号を表示しています</li>
+                    <li>誤解を招く可能性のある表現を使用していません</li>
+                    <li>短期間での高利回りや確実な利益を約束する表現を使用していません</li>
+                </ul>
+                <p>
+                    当サイトは、金融庁の定める「金融商品取引法」および関連法規を遵守しています。投資判断を行う前に、ご自身で調査を行うか、資格のある専門家にご相談ください。
+                </p>
+            </div>
+            
+            <p class="text-center">
+                &copy; 2023 高橋洋一投資アカデミー. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <!-- LINE Icon -->
-    <div class="line-icon cursor-pointer" onclick="opensite()">
-        <div class="w-16 h-16 bg-line rounded-full flex items-center justify-center shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            <div class="notification-badge">1</div>
-        </div>
-    </div>
+    <script>
+        // Badge Animation
+        function animateBadge() {
+            const badge = document.querySelector('.notification-badge');
+            if (badge) {
+                badge.style.transform = 'translateY(-50%) scale(1.1)';
+                setTimeout(() => {
+                    badge.style.transform = 'translateY(-50%) scale(1)';
+                }, 300);
+            }
+        }
+        
+        setInterval(animateBadge, 5000);
+    </script>
 </body>
 </html>
